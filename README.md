@@ -12,6 +12,10 @@
   <p align="center">
     Built by <b>Hitarth Mehta</b>
   </p>
+
+  <p align="center">
+    <b><a href="https://bolocreate.netlify.app">🚀 View Live Demo</a></b>
+  </p>
 </div>
 
 ---
@@ -57,9 +61,9 @@ Performance is prioritized through `IntersectionObserver` scroll reveals, CSS `w
 
 ## ✦ Hosting & Deployment
 
-This project is inherently a Static Site. It requires zero build steps, bundlers, or server-side rendering (SSR). 
+This project is inherently a Static Site. It requires zero build steps, bundlers, or server-side rendering (SSR), and is hosted live through **Netlify's** continuous deployment.
 
-It is designed to be hosted seamlessly on **Netlify**, **Vercel**, or **GitHub Pages**.
+🌐 **Live Website:** [bolocreate.netlify.app](https://bolocreate.netlify.app)
 
 <br>
 
