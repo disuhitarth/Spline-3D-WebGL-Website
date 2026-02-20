@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spline — Brand Design Guidelines</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #161616;
+            --bg-card-hover: #1e1e1e;
+            --border: rgba(255, 255, 255, 0.07);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #555555;
+            --accent-blue: #3a7bfd;
+            --accent-purple: #a855f7;
+            --accent-pink: #ec4899;
+            --accent-green: #22c55e;
+            --accent-orange: #f97316;
+            --accent-yellow: #eab308;
+            --accent-cyan: #06b6d4;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 20% 30%, rgba(58, 123, 253, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 70%, rgba(168, 85, 247, 0.10) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 50% 100%, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        .hero-badge span {
+            color: var(--accent-blue);
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 30%, rgba(255, 255, 255, 0.5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-secondary);
+            max-width: 540px;
+            font-weight: 400;
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+
+        .section-sub {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            max-width: 520px;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ── COLOR PALETTE ── */
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .swatch {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: default;
+        }
+
+        .swatch:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .swatch-color {
+            height: 100px;
+            width: 100%;
+        }
+
+        .swatch-info {
+            padding: 14px 16px;
+            background: var(--bg-card);
+        }
+
+        .swatch-name {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .swatch-hex {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: 'SF Mono', monospace;
+        }
+
+        .swatch-use {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ── GRADIENT ORBS ── */
+        .orb-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .orb {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s ease;
+        }
+
+        .orb:hover {
+            transform: scale(1.12) rotate(6deg);
+        }
+
+        /* ── TYPOGRAPHY ── */
+        .type-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .type-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 28px 32px;
+            display: flex;
+            align-items: baseline;
+            gap: 24px;
+            transition: border-color 0.2s;
+        }
+
+        .type-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .type-meta {
+            min-width: 130px;
+            flex-shrink: 0;
+        }
+
+        .type-meta-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .type-meta-detail {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .type-sample {
+            flex: 1;
+        }
+
+        /* ── BRAND VOICE ── */
+        .voice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .voice-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .voice-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .voice-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .voice-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .voice-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ── UI COMPONENTS ── */
+        .components-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 100px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.12);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            border: none;
+            border-radius: 100px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: transform 0.15s, opacity 0.15s;
+        }
+
+        .btn-accent:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+        }
+
+        /* ── UI PILLS/TAGS ── */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+        }
+
+        /* ── SPACING ── */
+        .spacing-row {
+            display: flex;
+            gap: 16px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .spacing-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .spacing-visual {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 4px;
+            width: 40px;
+        }
+
+        .spacing-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        /* ── LOGO MARK ── */
+        .logo-section {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .logo-bg-card {
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            padding: 40px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .logo-light {
+            background: var(--bg-card);
+        }
+
+        .logo-dark {
+            background: #fff;
+        }
+
+        .logo-mark {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: conic-gradient(#3a7bfd 0deg, #a855f7 90deg, #ec4899 180deg, #22c55e 270deg, #3a7bfd 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-mark-inner {
+            width: 20px;
+            height: 20px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .logo-wordmark {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-left: 12px;
+        }
+
+        /* ── MOTION ── */
+        .easing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .easing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+        }
+
+        .easing-card h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .easing-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: monospace;
+            margin-bottom: 12px;
+        }
+
+        .easing-track {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .easing-fill {
+            height: 100%;
+            border-radius: 100px;
+            width: 0;
+            transition-duration: 0.8s;
+            animation: fillBar 2s cubic-bezier(0.25, 0, 0, 1) infinite alternate;
+        }
+
+        @keyframes fillBar {
+            from {
+                width: 10%;
+            }
+
+            to {
+                width: 90%;
+            }
+        }
+
+        /* ── WORK / SHOWCASE ── */
+        .work-filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .work-filter {
+            padding: 7px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: border-color 0.15s, color 0.15s, background 0.15s;
+        }
+
+        .work-filter:hover,
+        .work-filter.active {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            background: rgba(58, 123, 253, 0.08);
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .work-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .work-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            cursor: pointer;
+            position: relative;
+            transition: border-color 0.2s, transform 0.25s cubic-bezier(0.25, 0, 0, 1), box-shadow 0.25s;
+        }
+
+        .work-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        .work-card-thumb {
+            height: 180px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Floating 3D shape inside thumbnails */
+        .work-card-thumb::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            opacity: 0.9;
+            filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.6));
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .work-card:hover .work-card-thumb::after {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        .work-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .work-card:hover .work-card-overlay {
+            opacity: 1;
+        }
+
+        .work-card-info {
+            padding: 16px 18px 18px;
+        }
+
+        .work-card-category {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .work-card-title {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 4px;
+        }
+
+        .work-card-author {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .work-card-author span {
+            color: var(--accent-blue);
+        }
+
+        /* layout-spec card  */
+        .work-spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .work-spec-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+        }
+
+        .work-spec-card h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .work-spec-card p,
+        .work-spec-card li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .work-spec-card ul {
+            list-style: none;
+            display: grid;
+            gap: 4px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        footer span {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-badge"><span>●</span> Brand Guidelines · 2025</div>
+        <h1>Spline<br>Design System</h1>
+        <p>A visual language built for depth, motion, and creative expression — the design DNA behind the world's
+            leading 3D design platform.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── 1. COLOR PALETTE ── -->
+    <section id="colors">
+        <div class="section-label">01 — Color</div>
+        <div class="section-title">Color Palette</div>
+        <p class="section-sub">A deep-space dark foundation amplified by vivid, chromatic accent colors that convey
+            creativity and dimensionality.</p>
+
+        <p
+            style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">
+            Backgrounds & Surfaces</p>
+        <div class="palette-grid" style="margin-bottom:40px;">
+            <div class="swatch">
+                <div class="swatch-color" style="background:#0a0a0a;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Void</div>
+                    <div class="swatch-hex">#0A0A0A</div>
+                    <div class="swatch-use">Primary background</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-color" style="background:#111111;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Onyx</div>
+                    <div class="swatch-hex">#111111</div>
+                    <div class="swatch-use">Secondary background</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-color" style="background:#161616;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Graphite</div>
+                    <div class="swatch-hex">#161616</div>
+                    <div class="swatch-use">Card surfaces</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-color" style="background:#1e1e1e;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Charcoal</div>
+                    <div class="swatch-hex">#1E1E1E</div>
+                    <div class="swatch-use">Hover / elevated card</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-color"
+                    style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.07);"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Glass Stroke</div>
+                    <div class="swatch-hex">rgba(255,255,255,0.07)</div>
+                    <div class="swatch-use">Borders & dividers</div>
+                </div>
+            </div>
+        </div>
+
+        <p
+            style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">
+            Accent Colors</p>
+        <div class="palette-grid" style="margin-bottom:48px;">
+            <div class="swatch">
+                <div class="swatch-color" style="background:#3a7bfd;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Electric Blue</div>
+                    <div class="swatch-hex">#3A7BFD</div>
+                    <div class="swatch-use">Primary CTA, links</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-color" style="background:#a855f7;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Violet</div>
+                    <div class="swatch-hex">#A855F7</div>
+                    <div class="swatch-use">Gradient partner</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-color" style="background:#ec4899;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Hot Pink</div>
+                    <div class="swatch-hex">#EC4899</div>
+                    <div class="swatch-use">Highlight, badges</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-color" style="background:#22c55e;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Neon Green</div>
+                    <div class="swatch-hex">#22C55E</div>
+                    <div class="swatch-use">Success, active states</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-color" style="background:#f97316;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Solar Orange</div>
+                    <div class="swatch-hex">#F97316</div>
+                    <div class="swatch-use">Warmth, contrast pop</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-color" style="background:#eab308;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Chrome Yellow</div>
+                    <div class="swatch-hex">#EAB308</div>
+                    <div class="swatch-use">Accents, tags</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-color" style="background:#06b6d4;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Cyan</div>
+                    <div class="swatch-hex">#06B6D4</div>
+                    <div class="swatch-use">Informational</div>
+                </div>
+            </div>
+        </div>
+
+        <p
+            style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">
+            Signature 3D Object Gradients</p>
+        <div class="orb-row">
+            <div class="orb" style="background:linear-gradient(135deg,#d946ef,#a855f7);"></div>
+            <div class="orb" style="background:linear-gradient(135deg,#f97316,#eab308);"></div>
+            <div class="orb" style="background:linear-gradient(135deg,#3a7bfd,#06b6d4);"></div>
+            <div class="orb" style="background:linear-gradient(135deg,#22c55e,#06b6d4);"></div>
+            <div class="orb" style="background:linear-gradient(135deg,#ec4899,#f97316);"></div>
+            <div class="orb" style="background:linear-gradient(135deg,#3b82f6,#a855f7);"></div>
+            <div class="orb" style="background:linear-gradient(135deg,#22c55e,#3a7bfd);"></div>
+            <div class="orb" style="background:linear-gradient(135deg,#ec4899,#a855f7);"></div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);">These bicolor gradients are applied to the floating 3D
+            rounded shapes that define Spline's hero aesthetic. Each uses a 135° angle with high-saturation vibrant hues
+            on a matte dark base.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── 2. TYPOGRAPHY ── -->
+    <section id="typography">
+        <div class="section-label">02 — Typography</div>
+        <div class="section-title">Type System</div>
+        <p class="section-sub">Inter — a rational, geometric typeface delivering maximum legibility at every weight from
+            headlines to captions.</p>
+
+        <div class="type-grid">
+            <div class="type-card">
+                <div class="type-meta">
+                    <div class="type-meta-label">Display</div>
+                    <div class="type-meta-detail">96px · 900 · −4%</div>
+                </div>
+                <div class="type-sample" style="font-size:52px;font-weight:900;letter-spacing:-0.04em;line-height:1;">
+                    Design.</div>
+            </div>
+            <div class="type-card">
+                <div class="type-meta">
+                    <div class="type-meta-label">Heading 1</div>
+                    <div class="type-meta-detail">48px · 800 · −3%</div>
+                </div>
+                <div class="type-sample" style="font-size:36px;font-weight:800;letter-spacing:-0.03em;">The all-in-one
+                    platform</div>
+            </div>
+            <div class="type-card">
+                <div class="type-meta">
+                    <div class="type-meta-label">Heading 2</div>
+                    <div class="type-meta-detail">32px · 700 · −2%</div>
+                </div>
+                <div class="type-sample" style="font-size:28px;font-weight:700;letter-spacing:-0.02em;">Real-time
+                    Collaboration</div>
+            </div>
+            <div class="type-card">
+                <div class="type-meta">
+                    <div class="type-meta-label">Subheading</div>
+                    <div class="type-meta-detail">20px · 500 · −1%</div>
+                </div>
+                <div class="type-sample"
+                    style="font-size:20px;font-weight:500;letter-spacing:-0.01em;color:var(--text-secondary);">Create
+                    interactive 3D experiences</div>
+            </div>
+            <div class="type-card">
+                <div class="type-meta">
+                    <div class="type-meta-label">Body</div>
+                    <div class="type-meta-detail">16px · 400 · 0%</div>
+                </div>
+                <div class="type-sample" style="font-size:16px;font-weight:400;color:var(--text-secondary);">Spline is a
+                    design platform to create and collaborate on interactive production-ready experiences in real-time.
+                </div>
+            </div>
+            <div class="type-card">
+                <div class="type-meta">
+                    <div class="type-meta-label">Label</div>
+                    <div class="type-meta-detail">11px · 600 · +15%</div>
+                </div>
+                <div class="type-sample"
+                    style="font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-blue);">
+                    Section Label · Tag · Badge</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── 3. LOGO & MARK ── -->
+    <section id="logo">
+        <div class="section-label">03 — Identity</div>
+        <div class="section-title">Logo & Mark</div>
+        <p class="section-sub">The Spline logomark is a chromatic sphere — representing infinite creative dimensions —
+            paired with the Inter 800 weight wordmark.</p>
+
+        <div class="logo-section">
+            <div class="logo-bg-card logo-light">
+                <div class="logo-mark">
+                    <div class="logo-mark-inner"></div>
+                </div>
+                <div class="logo-wordmark" style="color:#fff;">Spline</div>
+            </div>
+            <div class="logo-bg-card logo-dark">
+                <div class="logo-mark">
+                    <div class="logo-mark-inner" style="background:#fff;"></div>
+                </div>
+                <div class="logo-wordmark" style="color:#000;">Spline</div>
+            </div>
+        </div>
+
+        <div
+            style="margin-top:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px 28px;">
+            <p style="font-size:13px;font-weight:600;margin-bottom:12px;">Logo Usage Rules</p>
+            <ul style="font-size:13px;color:var(--text-secondary);display:grid;gap:8px;list-style:none;">
+                <li>✅ Use on #0A0A0A or pure white backgrounds only</li>
+                <li>✅ Minimum clearspace = height of the "S" glyph on all sides</li>
+                <li>✅ Keep conic gradient rotation exact — do not recolor the sphere</li>
+                <li>❌ Do not stretch, rotate, or recolor the wordmark</li>
+                <li>❌ Do not use on mid-tone grey backgrounds — contrast suffers</li>
+                <li>❌ Do not place drop shadows on the logomark</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── 4. UI COMPONENTS ── -->
+    <section id="components">
+        <div class="section-label">04 — Components</div>
+        <div class="section-title">UI Components</div>
+        <p class="section-sub">Minimal, pill-shaped, high-contrast interactive elements that live on the dark canvas
+            without visual noise.</p>
+
+        <p
+            style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">
+            Buttons</p>
+        <div class="components-row">
+            <button class="btn-primary">Get Started →</button>
+            <button class="btn-accent">Get started — it's free →</button>
+            <button class="btn-ghost">Log In</button>
+        </div>
+
+        <p
+            style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;margin-top:32px;">
+            Tags & Labels</p>
+        <div class="components-row">
+            <span class="tag" style="color:#3a7bfd;border-color:rgba(58,123,253,0.3);">● Live</span>
+            <span class="tag">Products</span>
+            <span class="tag">3D Design</span>
+            <span class="tag"
+                style="background:rgba(168,85,247,0.12);border-color:rgba(168,85,247,0.3);color:#a855f7;">New</span>
+            <span class="tag"
+                style="background:rgba(234,179,8,0.12);border-color:rgba(234,179,8,0.3);color:#eab308;">Beta</span>
+        </div>
+
+        <p
+            style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;margin-top:32px;">
+            Border Radius Scale</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:16px;">
+            <div
+                style="width:48px;height:48px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-muted);">
+                8px</div>
+            <div
+                style="width:56px;height:56px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-muted);">
+                14px</div>
+            <div
+                style="width:64px;height:64px;background:var(--bg-card);border:1px solid var(--border);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-muted);">
+                20px</div>
+            <div
+                style="width:72px;height:72px;background:var(--bg-card);border:1px solid var(--border);border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-muted);">
+                28px</div>
+            <div
+                style="width:80px;height:80px;background:var(--bg-card);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-muted);">
+                50%</div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── 5. SPACING ── -->
+    <section id="spacing">
+        <div class="section-label">05 — Spacing</div>
+        <div class="section-title">Spacing Scale</div>
+        <p class="section-sub">An 8px base grid. All layout spacing is a multiple of 8 for rhythmic visual consistency.
+        </p>
+        <div class="spacing-row">
+            <div class="spacing-block">
+                <div class="spacing-visual" style="height:8px;"></div>
+                <div class="spacing-label">4px</div>
+            </div>
+            <div class="spacing-block">
+                <div class="spacing-visual" style="height:16px;"></div>
+                <div class="spacing-label">8px</div>
+            </div>
+            <div class="spacing-block">
+                <div class="spacing-visual" style="height:24px;"></div>
+                <div class="spacing-label">12px</div>
+            </div>
+            <div class="spacing-block">
+                <div class="spacing-visual" style="height:32px;"></div>
+                <div class="spacing-label">16px</div>
+            </div>
+            <div class="spacing-block">
+                <div class="spacing-visual" style="height:48px;"></div>
+                <div class="spacing-label">24px</div>
+            </div>
+            <div class="spacing-block">
+                <div class="spacing-visual" style="height:64px;"></div>
+                <div class="spacing-label">32px</div>
+            </div>
+            <div class="spacing-block">
+                <div class="spacing-visual" style="height:80px;"></div>
+                <div class="spacing-label">48px</div>
+            </div>
+            <div class="spacing-block">
+                <div class="spacing-visual" style="height:96px;"></div>
+                <div class="spacing-label">64px</div>
+            </div>
+            <div class="spacing-block">
+                <div class="spacing-visual" style="height:120px;"></div>
+                <div class="spacing-label">80px</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── 6. MOTION ── -->
+    <section id="motion">
+        <div class="section-label">06 — Motion</div>
+        <div class="section-title">Motion & Easing</div>
+        <p class="section-sub">All animations feel weightless and premium. Fast responses with smooth deceleration —
+            never linear.</p>
+        <div class="easing-grid">
+            <div class="easing-card">
+                <h4>Micro · Hover</h4>
+                <p>150ms · ease-out</p>
+                <div class="easing-track">
+                    <div class="easing-fill" style="background:var(--accent-blue);animation-duration:1.5s;"></div>
+                </div>
+            </div>
+            <div class="easing-card">
+                <h4>Standard · Transition</h4>
+                <p>250ms · cubic-bezier(0.25,0,0,1)</p>
+                <div class="easing-track">
+                    <div class="easing-fill" style="background:var(--accent-purple);animation-duration:2s;"></div>
+                </div>
+            </div>
+            <div class="easing-card">
+                <h4>Emphasis · Enter</h4>
+                <p>400ms · cubic-bezier(0.34,1.56,0.64,1)</p>
+                <div class="easing-track">
+                    <div class="easing-fill" style="background:var(--accent-pink);animation-duration:2.5s;"></div>
+                </div>
+            </div>
+            <div class="easing-card">
+                <h4>Reveal · Scroll</h4>
+                <p>600ms · ease · stagger 80ms</p>
+                <div class="easing-track">
+                    <div class="easing-fill" style="background:var(--accent-green);animation-duration:3s;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── 7. BRAND VOICE ── -->
+    <section id="voice">
+        <div class="section-label">07 — Voice</div>
+        <div class="section-title">Brand Voice & Tone</div>
+        <p class="section-sub">Spline speaks like a creative collaborator — knowledgeable, direct, and inspiring. Never
+            corporate, never cold.</p>
+        <div class="voice-grid">
+            <div class="voice-card">
+                <div class="voice-icon">⚡</div>
+                <h4>Empowering</h4>
+                <p>Puts creative power in the user's hands. "Build anything. Ship anywhere."</p>
+            </div>
+            <div class="voice-card">
+                <div class="voice-icon">🎯</div>
+                <h4>Direct</h4>
+                <p>No filler. Gets to value fast. Headlines rarely exceed 6 words.</p>
+            </div>
+            <div class="voice-card">
+                <div class="voice-icon">🌀</div>
+                <h4>Visionary</h4>
+                <p>Positions 3D as the future of design — not a niche skill.</p>
+            </div>
+            <div class="voice-card">
+                <div class="voice-icon">🤝</div>
+                <h4>Collaborative</h4>
+                <p>"Real-time collaboration" is always front and center. Designed for teams.</p>
+            </div>
+            <div class="voice-card">
+                <div class="voice-icon">✨</div>
+                <h4>Playful</h4>
+                <p>Floating 3D objects and micro-interactions signal a sense of fun.</p>
+            </div>
+            <div class="voice-card">
+                <div class="voice-icon">🆓</div>
+                <h4>Accessible</h4>
+                <p>"It's free" always lives next to the primary CTA — low barrier to entry.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── 8. BACKGROUND SYSTEM ── -->
+    <section id="bg">
+        <div class="section-label">08 — Environment</div>
+        <div class="section-title">Background System</div>
+        <p class="section-sub">The dark canvas is the stage. Radial gradients act as ambient lighting, giving scenes
+            dimension without 3D rendering overhead.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;">
+            <div
+                style="background:radial-gradient(ellipse at 20% 30%,rgba(58,123,253,0.18) 0%,transparent 70%),#0a0a0a;border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;height:160px;">
+                <p style="font-size:13px;font-weight:600;">Blue Radial Wash</p>
+                <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">Hero left glow · Electric blue 18%
+                    opacity</p>
+            </div>
+            <div
+                style="background:radial-gradient(ellipse at 80% 70%,rgba(168,85,247,0.16) 0%,transparent 70%),#0a0a0a;border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;height:160px;">
+                <p style="font-size:13px;font-weight:600;">Purple Radial Wash</p>
+                <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">Hero right glow · Violet 16% opacity
+                </p>
+            </div>
+            <div
+                style="background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 100%),rgba(22,22,22,0.8);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;height:160px;">
+                <p style="font-size:13px;font-weight:600;">Glassmorphism Card</p>
+                <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">blur(12px) · bg rgba(22,22,22,0.8) ·
+                    border 7%</p>
+            </div>
+            <div
+                style="background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.04) 39px,rgba(255,255,255,0.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,0.04) 39px,rgba(255,255,255,0.04) 40px),#0a0a0a;border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;height:160px;">
+                <p style="font-size:13px;font-weight:600;">Perspective Grid</p>
+                <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">Used in hero bottom section · 40px
+                    grid · 4% opacity</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── 9. WORK & SHOWCASE ── -->
+    <section id="work">
+        <div class="section-label">09 — Work</div>
+        <div class="section-title">Work & Showcase</div>
+        <p class="section-sub">Community work spans 9 core use-case categories — each rendered as a dark card with a
+            signature gradient thumbnail and author attribution.</p>
+
+        <!-- Filter pills -->
+        <div class="work-filters">
+            <button class="work-filter active">All</button>
+            <button class="work-filter">Interactive Websites</button>
+            <button class="work-filter">Product Design</button>
+            <button class="work-filter">Brand &amp; Marketing</button>
+            <button class="work-filter">Gamified Experiences</button>
+            <button class="work-filter">3D Mockups</button>
+            <button class="work-filter">3D Logos</button>
+            <button class="work-filter">Animated Characters</button>
+            <button class="work-filter">3D Icons</button>
+            <button class="work-filter">Industrial</button>
+        </div>
+
+        <!-- Work card grid -->
+        <div class="work-grid">
+
+            <!-- Interactive Websites -->
+            <div class="work-card">
+                <div class="work-card-thumb"
+                    style="background:radial-gradient(ellipse at 30% 40%,rgba(58,123,253,0.3) 0%,transparent 60%),linear-gradient(135deg,#0d1521,#0a0a0a);">
+                    <div
+                        style="width:90px;height:90px;border-radius:28px;background:linear-gradient(135deg,#3b82f6,#a855f7);box-shadow:0 16px 40px rgba(59,130,246,0.4);transform:rotate(-8deg);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);">
+                    </div>
+                    <div class="work-card-overlay"></div>
+                </div>
+                <div class="work-card-info">
+                    <div class="work-card-category">Interactive Websites</div>
+                    <div class="work-card-title">3D Hero Section</div>
+                    <div class="work-card-author"><span>@DesignGabor</span></div>
+                </div>
+            </div>
+
+            <!-- Product Design -->
+            <div class="work-card">
+                <div class="work-card-thumb"
+                    style="background:radial-gradient(ellipse at 70% 30%,rgba(168,85,247,0.25) 0%,transparent 60%),linear-gradient(135deg,#110d1a,#0a0a0a);">
+                    <div
+                        style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#d946ef,#a855f7);box-shadow:0 16px 40px rgba(168,85,247,0.4);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);">
+                    </div>
+                    <div class="work-card-overlay"></div>
+                </div>
+                <div class="work-card-info">
+                    <div class="work-card-category">Product Design</div>
+                    <div class="work-card-title">App Interface 3D</div>
+                    <div class="work-card-author"><span>@heyvlad</span></div>
+                </div>
+            </div>
+
+            <!-- Brand & Marketing -->
+            <div class="work-card">
+                <div class="work-card-thumb"
+                    style="background:radial-gradient(ellipse at 50% 50%,rgba(236,72,153,0.2) 0%,transparent 60%),linear-gradient(135deg,#1a0d11,#0a0a0a);">
+                    <div
+                        style="width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,#ec4899,#f97316);box-shadow:0 16px 40px rgba(236,72,153,0.4);transform:rotate(12deg);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);">
+                    </div>
+                    <div class="work-card-overlay"></div>
+                </div>
+                <div class="work-card-info">
+                    <div class="work-card-category">Brand &amp; Marketing</div>
+                    <div class="work-card-title">Brand Identity Scene</div>
+                    <div class="work-card-author"><span>@sanny.verkissen</span></div>
+                </div>
+            </div>
+
+            <!-- Gamified Experiences -->
+            <div class="work-card">
+                <div class="work-card-thumb"
+                    style="background:radial-gradient(ellipse at 40% 60%,rgba(34,197,94,0.2) 0%,transparent 60%),linear-gradient(135deg,#0a1410,#0a0a0a);">
+                    <div
+                        style="width:0;height:0;border-left:45px solid transparent;border-right:45px solid transparent;border-bottom:78px solid transparent;background:transparent;position:relative;">
+                        <div
+                            style="position:absolute;top:0;left:-45px;width:90px;height:90px;clip-path:polygon(50% 0%, 0% 100%, 100% 100%);background:linear-gradient(135deg,#22c55e,#06b6d4);box-shadow:0 16px 40px rgba(34,197,94,0.4);">
+                        </div>
+                    </div>
+                    <div class="work-card-overlay"></div>
+                </div>
+                <div class="work-card-info">
+                    <div class="work-card-category">Gamified Experiences</div>
+                    <div class="work-card-title">Game UI Level Scene</div>
+                    <div class="work-card-author"><span>@rluzmotion</span></div>
+                </div>
+            </div>
+
+            <!-- 3D Mockups -->
+            <div class="work-card">
+                <div class="work-card-thumb"
+                    style="background:radial-gradient(ellipse at 60% 40%,rgba(249,115,22,0.2) 0%,transparent 60%),linear-gradient(135deg,#1a1008,#0a0a0a);">
+                    <div
+                        style="width:90px;height:60px;border-radius:12px;background:linear-gradient(135deg,#f97316,#eab308);box-shadow:0 16px 40px rgba(249,115,22,0.4);transform:perspective(200px) rotateY(-15deg);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);">
+                    </div>
+                    <div class="work-card-overlay"></div>
+                </div>
+                <div class="work-card-info">
+                    <div class="work-card-category">3D Mockups</div>
+                    <div class="work-card-title">Device Showcase</div>
+                    <div class="work-card-author"><span>@tanyadizone</span></div>
+                </div>
+            </div>
+
+            <!-- 3D Logos -->
+            <div class="work-card">
+                <div class="work-card-thumb"
+                    style="background:radial-gradient(ellipse at 50% 30%,rgba(234,179,8,0.2) 0%,transparent 60%),linear-gradient(135deg,#131000,#0a0a0a);">
+                    <div
+                        style="width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,#eab308,#f97316);box-shadow:0 16px 40px rgba(234,179,8,0.4);transform:rotate(6deg);font-size:32px;display:flex;align-items:center;justify-content:center;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);">
+                        ✦</div>
+                    <div class="work-card-overlay"></div>
+                </div>
+                <div class="work-card-info">
+                    <div class="work-card-category">3D Logos</div>
+                    <div class="work-card-title">Animated Brand Mark</div>
+                    <div class="work-card-author"><span>@samborek</span></div>
+                </div>
+            </div>
+
+            <!-- Animated Characters -->
+            <div class="work-card">
+                <div class="work-card-thumb"
+                    style="background:radial-gradient(ellipse at 30% 70%,rgba(6,182,212,0.2) 0%,transparent 60%),linear-gradient(135deg,#080f12,#0a0a0a);">
+                    <div
+                        style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#06b6d4,#3a7bfd);box-shadow:0 16px 40px rgba(6,182,212,0.4);display:flex;align-items:center;justify-content:center;font-size:32px;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);">
+                        🐇</div>
+                    <div class="work-card-overlay"></div>
+                </div>
+                <div class="work-card-info">
+                    <div class="work-card-category">Animated Characters</div>
+                    <div class="work-card-title">Character Rig &amp; Loop</div>
+                    <div class="work-card-author"><span>@aximoris</span></div>
+                </div>
+            </div>
+
+            <!-- 3D Icons -->
+            <div class="work-card">
+                <div class="work-card-thumb"
+                    style="background:radial-gradient(ellipse at 70% 50%,rgba(168,85,247,0.2) 0%,transparent 60%),linear-gradient(135deg,#10091a,#0a0a0a);">
+                    <div style="display:flex;gap:12px;">
+                        <div
+                            style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#a855f7,#ec4899);box-shadow:0 8px 20px rgba(168,85,247,0.4);">
+                        </div>
+                        <div
+                            style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#3a7bfd,#06b6d4);box-shadow:0 8px 20px rgba(58,123,253,0.4);">
+                        </div>
+                        <div
+                            style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#22c55e,#eab308);box-shadow:0 8px 20px rgba(34,197,94,0.4);">
+                        </div>
+                    </div>
+                    <div class="work-card-overlay"></div>
+                </div>
+                <div class="work-card-info">
+                    <div class="work-card-category">3D Icons</div>
+                    <div class="work-card-title">Icon System Pack</div>
+                    <div class="work-card-author"><span>@adriandaniluk</span></div>
+                </div>
+            </div>
+
+            <!-- Industrial & Manufacturing -->
+            <div class="work-card">
+                <div class="work-card-thumb"
+                    style="background:radial-gradient(ellipse at 50% 50%,rgba(100,116,139,0.2) 0%,transparent 60%),linear-gradient(135deg,#0c0c0e,#0a0a0a);">
+                    <div
+                        style="width:90px;height:55px;border-radius:8px;background:linear-gradient(135deg,#64748b,#94a3b8);box-shadow:0 16px 40px rgba(100,116,139,0.4);transform:perspective(200px) rotateX(10deg);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);">
+                    </div>
+                    <div class="work-card-overlay"></div>
+                </div>
+                <div class="work-card-info">
+                    <div class="work-card-category">Industrial &amp; Manufacturing</div>
+                    <div class="work-card-title">Product Visualizer</div>
+                    <div class="work-card-author"><span>@lionti</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Design Specs for Work Section -->
+        <div class="work-spec-grid">
+            <div class="work-spec-card">
+                <h4>Card Structure</h4>
+                <ul>
+                    <li>Thumbnail height: <strong style="color:#fff;">180px</strong></li>
+                    <li>Border-radius: <strong style="color:#fff;">20px</strong> (--radius-lg)</li>
+                    <li>Border: <strong style="color:#fff;">1px solid rgba(255,255,255,0.07)</strong></li>
+                    <li>Hover lift: <strong style="color:#fff;">translateY(-6px)</strong></li>
+                    <li>Hover shadow: <strong style="color:#fff;">0 24px 48px rgba(0,0,0,0.5)</strong></li>
+                </ul>
+            </div>
+            <div class="work-spec-card">
+                <h4>Thumbnail System</h4>
+                <ul>
+                    <li>Background: <strong style="color:#fff;">Radial glow + near-black base</strong></li>
+                    <li>Floating shape: centered, 80–90px, gradient-filled</li>
+                    <li>Shape hover: <strong style="color:#fff;">scale(1.15) rotate(10deg)</strong></li>
+                    <li>Overlay on hover: <strong style="color:#fff;">gradient-to-top, 70% black</strong></li>
+                    <li>Each category gets its own accent glow color</li>
+                </ul>
+            </div>
+            <div class="work-spec-card">
+                <h4>Typography in Cards</h4>
+                <ul>
+                    <li>Category: <strong style="color:#fff;">10px / 600 / uppercase / #555</strong></li>
+                    <li>Title: <strong style="color:#fff;">14px / 700 / -0.01em</strong></li>
+                    <li>Author: <strong style="color:#fff;">12px / #555 → @handle in #3A7BFD</strong></li>
+                </ul>
+            </div>
+            <div class="work-spec-card">
+                <h4>9 Use-Case Categories</h4>
+                <ul>
+                    <li>Interactive Websites</li>
+                    <li>Product Design</li>
+                    <li>Brand &amp; Marketing</li>
+                    <li>Gamified Experiences</li>
+                    <li>3D Mockups · 3D Logos</li>
+                    <li>Animated Characters</li>
+                    <li>3D Icons</li>
+                    <li>Industrial &amp; Manufacturing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Spline Brand Guidelines &nbsp;·&nbsp; <span>spline.design</span> &nbsp;·&nbsp; Analysis by Antigravity
+            &nbsp;·&nbsp; 2025</p>
+    </footer>
+
+</body>
+
+</html>

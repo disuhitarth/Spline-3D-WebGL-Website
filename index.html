@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOLO CREATE — Design & Print for Bold Brands</title>
+    <meta name="description"
+        content="BOLO CREATE is an international creative agency offering custom print, branding, signage, and digital marketing services for forward-thinking small businesses and enterprises." />
+    <meta name="keywords"
+        content="custom print, branding, business cards, signage, marketing materials, digital marketing, logo design, BOLO CREATE" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Spline CDN preconnect — opens TCP/TLS early so scene loads faster -->
+    <link rel="preconnect" href="https://esm.sh" crossorigin />
+    <link rel="preconnect" href="https://prod.spline.design" crossorigin />
+    <!-- Preload the Spline runtime module so it's fetched during HTML parse -->
+    <link rel="modulepreload" href="https://esm.sh/@splinetool/runtime@1.9.72" crossorigin />
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="trans.js"></script>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════
+       NAVIGATION
+  ═══════════════════════════ -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav__logo">
+            <img src="https://i.ibb.co/PsDBLbP8/BOLO.png" alt="BOLO CREATE" class="nav__logo-img" fetchpriority="high"
+                decoding="async" />
+        </a>
+        <ul class="nav__links">
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="shop.html">SHOP</a></li>
+            <li><a href="#work">WORK</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        <div class="nav__actions">
+            <a href="shop.html" class="nav__cart-link" aria-label="Browse shop">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+            </a>
+            <a href="#contact" class="nav__cta">// GET A QUOTE <span class="nav__cta-arrow">→</span></a>
+        </div>
+        <button class="nav__burger" id="navBurger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#services" class="mobile-menu__link">SERVICES</a></li>
+            <li><a href="shop.html" class="mobile-menu__link">SHOP</a></li>
+            <li><a href="#work" class="mobile-menu__link">WORK</a></li>
+            <li><a href="#about" class="mobile-menu__link">ABOUT</a></li>
+            <li><a href="#contact" class="mobile-menu__link">CONTACT</a></li>
+        </ul>
+        <a href="#contact" class="btn btn--primary mobile-menu__cta">GET A QUOTE</a>
+    </div>
+
+    <!-- ═══════════════════════════
+       HERO SECTION
+  ═══════════════════════════ -->
+    <section class="hero" id="hero">
+
+        <!-- Ghost watermark text behind everything -->
+        <div class="hero__watermark" aria-hidden="true">BOLO</div>
+
+        <!-- ── SPLINE 3D SCENE ──────────────────────────────────
+             Robot loaded via @splinetool/runtime (vanilla JS).
+             Canvas is transparent — background shows through.
+        ─────────────────────────────────────────────────────── -->
+        <div class="hero__spline-zone" id="splineZone">
+            <!-- Shimmer loader — hides once Spline finishes loading -->
+            <div class="hero__spline-loader" id="splineLoader">
+                <div class="hero__spline-loader-pulse"></div>
+            </div>
+            <!-- 3D canvas — fills the zone, transparent bg -->
+            <canvas id="splineCanvas" class="hero__spline-canvas"></canvas>
+        </div>
+
+        <!-- Headline -->
+        <div class="hero__content">
+            <h1 class="hero__headline" id="heroHeadline">
+                <span class="hero__headline-line line-1">YOUR BRAND,</span>
+                <span class="hero__headline-line line-2">PRINTED BOLD.</span>
+            </h1>
+
+            <!-- Sub copy (bottom-left) -->
+            <p class="hero__sub" id="heroSub">
+                // DESIGN IT. PRINT IT. DELIVER IT.<br />
+                EVERYTHING YOUR BUSINESS NEEDS&nbsp;TO LOOK PROFESSIONAL.
+            </p>
+
+            <!-- Right descriptor -->
+            <div class="hero__descriptor" id="heroDescriptor">
+                // YOU NEED IT<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;WE PRINT IT
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="hero__scroll" aria-hidden="true">
+            <span>SCROLL</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+
+        <!-- 3D Tracking toggle — off by default for performance -->
+        <button class="hero__tracking-toggle" id="trackingToggle" aria-pressed="false" title="Toggle 3D mouse tracking">
+            <span class="hero__tracking-dot" id="trackingDot"></span>
+            <span class="hero__tracking-label" id="trackingLabel">3D TRACKING&nbsp;&nbsp;OFF</span>
+        </button>
+
+    </section>
+
+    <!-- ═══════════════════════════
+       TRUSTED BY — MARQUEE STRIP
+  ═══════════════════════════ -->
+    <section class="trust-strip" id="trust">
+        <p class="trust-strip__label">HERE FOR SMALL BUSINESS SINCE DAY ONE</p>
+        <div class="trust-strip__marquee" aria-hidden="true">
+            <div class="trust-strip__track">
+                <span>BUSINESS CARDS</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>BROCHURES &amp; FLYERS</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>CUSTOM SIGNAGE</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>BRANDED APPAREL</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>LOGO DESIGN</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>PROMO PRODUCTS</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>BUSINESS CARDS</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>BROCHURES &amp; FLYERS</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>CUSTOM SIGNAGE</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>BRANDED APPAREL</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>LOGO DESIGN</span>
+                <span class="trust-strip__dot">✦</span>
+                <span>PROMO PRODUCTS</span>
+                <span class="trust-strip__dot">✦</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════
+       SERVICES SECTION
+  ═══════════════════════════ -->
+    <section class="services" id="services">
+        <div class="services__header">
+            <span class="section-tag">// WHAT WE DO</span>
+            <h2 class="services__headline">
+                YOU NEED IT.<br />WE PRINT IT.
+            </h2>
+        </div>
+
+        <div class="services__grid">
+
+            <article class="service-card" id="service-print">
+                <div class="service-card__number">01</div>
+                <h3 class="service-card__title">CUSTOM PRINT</h3>
+                <p class="service-card__desc">Business cards, flyers, brochures, and postcards — professionally printed
+                    and shipped to your door. Make every piece of paper count.</p>
+                <a href="#contact" class="service-card__link">Get Started →</a>
+                <!-- SPLINE SLOT: swap .service-card__icon for a <spline-viewer> element -->
+                <div class="service-card__icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="8" y="14" width="24" height="14" rx="2" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M12 14V8h16v6" stroke="currentColor" stroke-width="1.5" />
+                        <rect x="12" y="22" width="16" height="8" rx="1" stroke="currentColor" stroke-width="1.5" />
+                        <circle cx="29" cy="19" r="1.5" fill="currentColor" />
+                    </svg>
+                </div>
+            </article>
+
+            <article class="service-card" id="service-signage">
+                <div class="service-card__number">02</div>
+                <h3 class="service-card__title">SIGNS &amp; DISPLAYS</h3>
+                <p class="service-card__desc">Window graphics, outdoor banners, trade show displays, and point-of-sale
+                    signage that make your brand impossible to ignore.</p>
+                <a href="#contact" class="service-card__link">Get Started →</a>
+                <div class="service-card__icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="6" y="6" width="28" height="20" rx="2" stroke="currentColor" stroke-width="1.5" />
+                        <line x1="6" y1="32" x2="34" y2="32" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="11" y1="13" x2="29" y2="13" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <line x1="11" y1="19" x2="22" y2="19" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+            </article>
+
+            <article class="service-card" id="service-apparel">
+                <div class="service-card__number">03</div>
+                <h3 class="service-card__title">BRANDED APPAREL</h3>
+                <p class="service-card__desc">Custom T-shirts, polos, hats, and uniforms — embroidered or printed. Turn
+                    your team into walking brand ambassadors from day one.</p>
+                <a href="#contact" class="service-card__link">Get Started →</a>
+                <div class="service-card__icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M15 8L6 14l4 4 2-2v16h16V16l2 2 4-4-9-6" stroke="currentColor" stroke-width="1.5"
+                            stroke-linejoin="round" />
+                        <path d="M15 8c0 2.76 2.24 5 5 5s5-2.24 5-5" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                </div>
+            </article>
+
+            <article class="service-card" id="service-digital">
+                <div class="service-card__number">04</div>
+                <h3 class="service-card__title">LOGO &amp; DIGITAL</h3>
+                <p class="service-card__desc">Free AI logo maker, social media templates, and digital ad campaigns that
+                    get you noticed online. Build a consistent look across every platform.</p>
+                <a href="#contact" class="service-card__link">Get Started →</a>
+                <div class="service-card__icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="20" cy="20" r="3" fill="currentColor" />
+                        <path d="M13.5 26.5a9 9 0 0 1 0-13" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <path d="M26.5 13.5a9 9 0 0 1 0 13" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <path d="M9 31a15 15 0 0 1 0-22" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                        <path d="M31 9a15 15 0 0 1 0 22" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+            </article>
+
+            <article class="service-card service-card--wide" id="service-enterprise">
+                <div class="service-card__number">05</div>
+                <h3 class="service-card__title">PROMO &amp; MERCH</h3>
+                <p class="service-card__desc">Branded pens, tote bags, mugs, notebooks, and hundreds of promotional
+                    products — the right assortment at the right price. Make your brand memorable long after the first
+                    handshake.</p>
+                <a href="#contact" class="service-card__link">Browse Products →</a>
+                <div class="service-card__icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="6" y="12" width="18" height="22" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M24 18h10v16H24" stroke="currentColor" stroke-width="1.5" />
+                        <rect x="10" y="17" width="4" height="4" stroke="currentColor" stroke-width="1" />
+                        <rect x="10" y="25" width="4" height="4" stroke="currentColor" stroke-width="1" />
+                        <rect x="16" y="17" width="4" height="4" stroke="currentColor" stroke-width="1" />
+                        <rect x="16" y="25" width="4" height="4" stroke="currentColor" stroke-width="1" />
+                        <rect x="13" y="31" width="5" height="3" stroke="currentColor" stroke-width="1" />
+                    </svg>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════
+       WORK / PORTFOLIO SECTION
+  ═══════════════════════════ -->
+    <section class="work" id="work">
+        <div class="work__header">
+            <div class="work__header-left">
+                <span class="section-tag">// SELECTED WORK</span>
+                <h2 class="work__headline">
+                    BRANDS WE'VE<br />MADE BOLD.
+                </h2>
+            </div>
+            <p class="work__header-right">
+                A selection of campaigns, print runs, and digital activations delivered for businesses around the world.
+            </p>
+        </div>
+
+        <div class="work__grid">
+
+            <!-- Project 01 — SPLINE SLOT: drop a <spline-viewer> inside .work-card__bg -->
+            <article class="work-card work-card--large" id="work-01">
+                <div class="work-card__bg"
+                    style="background: linear-gradient(to bottom, rgba(13,13,13,0.1), rgba(13,13,13,0.9)), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop'); background-size: cover; background-position: center;">
+                    <div class="work-card__placeholder">
+                        <span class="work-card__placeholder-num">01</span>
+                    </div>
+                </div>
+                <div class="work-card__overlay">
+                    <div class="work-card__meta">
+                        <span class="work-card__tag">BRAND IDENTITY</span>
+                        <span class="work-card__tag">PRINT</span>
+                    </div>
+                    <h3 class="work-card__title">LAUNCH KIT</h3>
+                    <p class="work-card__desc">Full brand identity suite — business cards, letterheads, and launch
+                        collateral for a fintech startup.</p>
+                    <a href="#contact" class="work-card__link">View Project →</a>
+                </div>
+            </article>
+
+            <!-- Project 02 — SPLINE SLOT: drop a <spline-viewer> inside .work-card__bg -->
+            <article class="work-card" id="work-02">
+                <div class="work-card__bg"
+                    style="background: linear-gradient(to bottom, rgba(13,13,13,0.1), rgba(13,13,13,0.9)), url('https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;">
+                    <div class="work-card__placeholder">
+                        <span class="work-card__placeholder-num">02</span>
+                    </div>
+                </div>
+                <div class="work-card__overlay">
+                    <div class="work-card__meta">
+                        <span class="work-card__tag">SIGNAGE</span>
+                    </div>
+                    <h3 class="work-card__title">RETAIL ROLLOUT</h3>
+                    <p class="work-card__desc">Window graphics, in-store banners, and POS displays across 40 retail
+                        locations.</p>
+                    <a href="#contact" class="work-card__link">View Project →</a>
+                </div>
+            </article>
+
+            <!-- Project 03 — SPLINE SLOT: drop a <spline-viewer> inside .work-card__bg -->
+            <article class="work-card" id="work-03">
+                <div class="work-card__bg"
+                    style="background: linear-gradient(to bottom, rgba(13,13,13,0.1), rgba(13,13,13,0.9)), url('https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;">
+                    <div class="work-card__placeholder">
+                        <span class="work-card__placeholder-num">03</span>
+                    </div>
+                </div>
+                <div class="work-card__overlay">
+                    <div class="work-card__meta">
+                        <span class="work-card__tag">APPAREL</span>
+                        <span class="work-card__tag">MERCH</span>
+                    </div>
+                    <h3 class="work-card__title">TEAM UNIFORM</h3>
+                    <p class="work-card__desc">Custom-embroidered uniforms and branded merch packs for a 200-person
+                        team.</p>
+                    <a href="#contact" class="work-card__link">View Project →</a>
+                </div>
+            </article>
+
+            <!-- Project 04 — SPLINE SLOT: drop a <spline-viewer> inside .work-card__bg -->
+            <article class="work-card work-card--large" id="work-04">
+                <div class="work-card__bg"
+                    style="background: linear-gradient(to bottom, rgba(13,13,13,0.1), rgba(13,13,13,0.9)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop'); background-size: cover; background-position: center;">
+                    <div class="work-card__placeholder">
+                        <span class="work-card__placeholder-num">04</span>
+                    </div>
+                </div>
+                <div class="work-card__overlay">
+                    <div class="work-card__meta">
+                        <span class="work-card__tag">DIGITAL</span>
+                        <span class="work-card__tag">MARKETING</span>
+                    </div>
+                    <h3 class="work-card__title">LAUNCH CAMPAIGN</h3>
+                    <p class="work-card__desc">AI logo, social templates, and a full digital ad campaign driving 3x ROAS
+                        for a DTC brand.</p>
+                    <a href="#contact" class="work-card__link">View Project →</a>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="work__footer">
+            <a href="#contact" class="btn btn--ghost" id="workCta">START YOUR PROJECT →</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════
+       MARQUEE STATEMENT
+  ═══════════════════════════ -->
+    <div class="statement-marquee" aria-hidden="true">
+        <div class="statement-marquee__track">
+            <span>PRINT IT.</span>
+            <span class="statement-marquee__dot">✦</span>
+            <span>BRAND IT.</span>
+            <span class="statement-marquee__dot">✦</span>
+            <span>SHIP IT.</span>
+            <span class="statement-marquee__dot">✦</span>
+            <span>GROW IT.</span>
+            <span class="statement-marquee__dot">✦</span>
+            <span>PRINT IT.</span>
+            <span class="statement-marquee__dot">✦</span>
+            <span>BRAND IT.</span>
+            <span class="statement-marquee__dot">✦</span>
+            <span>SHIP IT.</span>
+            <span class="statement-marquee__dot">✦</span>
+            <span>GROW IT.</span>
+            <span class="statement-marquee__dot">✦</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════
+       ABOUT / PHILOSOPHY SECTION
+  ═══════════════════════════ -->
+    <section class="about" id="about">
+        <div class="about__inner">
+            <div class="about__left">
+                <span class="section-tag">// WHO WE ARE</span>
+                <!-- SPLINE SLOT: place a 3D viewer inside .about__visual -->
+                <div class="about__visual" id="aboutSplineSlot">
+                    <div class="about__visual-inner">
+                        <div class="about__stat">
+                            <span class="about__stat-num">10M+</span>
+                            <span class="about__stat-label">Products Delivered</span>
+                        </div>
+                        <div class="about__stat">
+                            <span class="about__stat-num">150+</span>
+                            <span class="about__stat-label">Countries Served</span>
+                        </div>
+                        <div class="about__stat">
+                            <span class="about__stat-num">500K+</span>
+                            <span class="about__stat-label">Small Businesses Helped</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about__right">
+                <h2 class="about__headline">
+                    WHERE SMALL<br />
+                    <em>GETS BIG.</em>
+                </h2>
+                <p class="about__body">
+                    BOLO CREATE, a Cimpress company, helps small business owners create expertly designed, up-to-date
+                    custom marketing — the assortment of products they need to look professional, prepared, and plugged
+                    in.
+                </p>
+                <p class="about__body">
+                    Whether it's a single business card or a million-unit print run, we give you the right products, the
+                    right tools, and the right support to own every room you walk into.
+                </p>
+                <a href="#contact" class="btn btn--primary" id="aboutCta">START CREATING →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════
+       CTA BANNER
+  ═══════════════════════════ -->
+    <section class="cta-banner">
+        <div class="cta-banner__inner">
+            <h2 class="cta-banner__headline">
+                YOU DREAM IT.<br />WE MAKE IT REAL.
+            </h2>
+            <p class="cta-banner__sub">// PRINT · DESIGN · DELIVER — WHEREVER YOU ARE IN THE WORLD</p>
+            <div class="cta-banner__actions">
+                <a href="shop.html" class="btn btn--primary btn--lg" id="ctaShop">SHOP ALL PRODUCTS</a>
+                <a href="#contact" class="btn btn--ghost btn--lg" id="ctaEmail">GET IN TOUCH</a>
+            </div>
+        </div>
+        <div class="cta-banner__watermark" aria-hidden="true">BOLO</div>
+    </section>
+
+    <!-- ═══════════════════════════
+       CONTACT SECTION
+  ═══════════════════════════ -->
+    <section class="contact-section" id="contact">
+        <div class="contact-section__inner">
+
+            <!-- LEFT: Contact info + map -->
+            <div class="contact-section__left">
+                <span class="section-tag">// VISIT US</span>
+
+                <!-- Store photo (Google Maps panel) -->
+                <div class="contact-store-photo">
+                    <div class="contact-store-photo__inner">
+                        <!-- Store interior visual -->
+                        <div class="contact-store-photo__img" role="img" aria-label="BOLO CREATE store interior">
+                            <div class="contact-store-photo__overlay">
+                                <div class="contact-store-photo__badge">
+                                    <span class="store-badge__stars">★ 4.6</span>
+                                    <span class="store-badge__reviews">20 Google Reviews</span>
+                                </div>
+                                <div class="store-badge__name">BOLO Create</div>
+                                <div class="store-badge__type">Print shop · Mississauga, Ontario</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business info cards -->
+                <div class="contact-info-list">
+                    <div class="contact-info-item">
+                        <div class="contact-info-item__icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.6" stroke-linecap="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-item__label">ADDRESS</div>
+                            <div class="contact-info-item__value">
+                                <a href="https://maps.google.com/?q=3883+Nashua+Dr+Unit+9+Mississauga+ON+L4V+1V5"
+                                    target="_blank" rel="noopener">
+                                    3883 Nashua Dr, Unit 9<br />Mississauga, ON L4V 1V5
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-item__icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.6" stroke-linecap="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-item__label">PHONE</div>
+                            <div class="contact-info-item__value">
+                                <a href="tel:+18443212656">+1 844-321-2656</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-item__icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.6" stroke-linecap="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-item__label">HOURS</div>
+                            <div class="contact-info-item__value">
+                                Mon–Fri: 11am – 6pm<br />
+                                Saturday: 11am – 4pm<br />
+                                <span style="color:var(--muted-2)">Sunday: Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-item__icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.6" stroke-linecap="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-item__label">EMAIL</div>
+                            <div class="contact-info-item__value">
+                                <a href="mailto:hello@bolocreate.com">hello@bolocreate.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed -->
+                <div class="contact-map">
+                    <iframe title="BOLO CREATE location map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.5!2d-79.6!3d43.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b38e5f0c4c6c9%3A0x3b2a2d50b1e7c3d2!2s3883+Nashua+Dr+Unit+9%2C+Mississauga%2C+ON+L4V+1V5!5e0!3m2!1sen!2sca!4v1&output=embed"
+                        width="100%" height="220" style="border:0; border-radius:10px; display:block;" allowfullscreen
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <a href="https://maps.google.com/?q=3883+Nashua+Dr+Unit+9+Mississauga+ON" target="_blank"
+                        rel="noopener" class="contact-map__link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        GET DIRECTIONS →
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT: Contact Form -->
+            <div class="contact-section__right">
+                <span class="section-tag">// SEND A MESSAGE</span>
+                <h2 class="contact-form__headline">LET'S GET TO WORK.</h2>
+                <p class="contact-form__sub">Fill out the form and our team will respond within 24 hours with a custom
+                    quote or answer to your question.</p>
+
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="contact-form__row contact-form__row--2">
+                        <div class="contact-form__group">
+                            <label for="cf-name">Full Name *</label>
+                            <input type="text" id="cf-name" name="name" placeholder="Jane Smith" required />
+                        </div>
+                        <div class="contact-form__group">
+                            <label for="cf-company">Company / Business</label>
+                            <input type="text" id="cf-company" name="company" placeholder="Acme Inc." />
+                        </div>
+                    </div>
+                    <div class="contact-form__group">
+                        <label for="cf-email">Email Address *</label>
+                        <input type="email" id="cf-email" name="email" placeholder="jane@yourbrand.com" required />
+                    </div>
+                    <div class="contact-form__group">
+                        <label for="cf-phone">Phone Number</label>
+                        <input type="tel" id="cf-phone" name="phone" placeholder="+1 (416) 555-0100" />
+                    </div>
+                    <div class="contact-form__group">
+                        <label for="cf-service">What can we help with?</label>
+                        <select id="cf-service" name="service">
+                            <option value="">Select a service...</option>
+                            <option>Custom Print (cards, flyers, brochures)</option>
+                            <option>Signage &amp; Banners</option>
+                            <option>Branded Clothing &amp; Apparel</option>
+                            <option>Promotional Products</option>
+                            <option>Logo &amp; Brand Design</option>
+                            <option>Labels &amp; Stickers</option>
+                            <option>Packaging</option>
+                            <option>Enterprise / Wholesale</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="contact-form__group">
+                        <label for="cf-message">Message *</label>
+                        <textarea id="cf-message" name="message" rows="5"
+                            placeholder="Tell us about your project — quantity, timeline, budget, and any artwork you have."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--lg" id="cfSubmit">SEND MESSAGE →</button>
+                    <p class="contact-form__privacy">By submitting you agree to our <a href="#">Privacy Policy</a>. We
+                        never share your info.</p>
+                </form>
+
+                <div class="contact-form__success" id="cfSuccess" style="display:none">
+                    <div class="cf-success-icon">✓</div>
+                    <h3>MESSAGE SENT!</h3>
+                    <p>Thanks! We'll get back to you within 24 hours.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════
+       INFINITE TICKER
+  ═══════════════════════════ -->
+    <section class="footer-ticker">
+        <div class="footer-ticker__inner" id="footerTicker">
+            <span>BRAND IDENTITY ✦ PACKAGING ✦ RETAIL SIGNAGE ✦ APPAREL & MERCH ✦ DIGITAL CAMPAIGNS ✦ UI/UX EXPERIENCES
+                ✦ </span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════
+       FOOTER
+  ═══════════════════════════ -->
+    <footer class="footer">
+        <div class="footer__top">
+            <div class="footer__brand">
+                <a href="#" class="footer__logo">
+                    <img src="https://i.ibb.co/PsDBLbP8/BOLO.png" alt="BOLO CREATE" class="footer__logo-img"
+                        loading="lazy" decoding="async" />
+                </a>
+                <p class="footer__tagline">Here for small business since day one.</p>
+            </div>
+            <div class="footer__links-col">
+                <h4>SERVICES</h4>
+                <ul>
+                    <li><a href="#service-print">Custom Print</a></li>
+                    <li><a href="#service-signage">Signage</a></li>
+                    <li><a href="#service-apparel">Branded Apparel</a></li>
+                    <li><a href="#service-digital">Digital Marketing</a></li>
+                </ul>
+            </div>
+            <div class="footer__links-col">
+                <h4>COMPANY</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#work">Our Work</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__links-col">
+                <h4>CONNECT</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter / X</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__clients">
+            <p class="footer__clients-label">TRUSTED BY FORWARD THINKING BRANDS</p>
+            <div class="footer__logos">
+
+                <div class="footer__logo-item">
+                    <svg viewBox="0 0 120 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Vantara">
+                        <rect x="0" y="7" width="20" height="20" rx="5" fill="url(#lg1)" />
+                        <text x="26" y="24" font-family="Inter,sans-serif" font-size="15" font-weight="800"
+                            letter-spacing="-0.04em" fill="white">VANTARA</text>
+                        <defs>
+                            <linearGradient id="lg1" x1="0" y1="7" x2="20" y2="27" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#3a7bfd" />
+                                <stop offset="1" stop-color="#a855f7" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="footer__logo-item">
+                    <svg viewBox="0 0 100 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Nexus">
+                        <circle cx="13" cy="17" r="11" fill="url(#lg2)" />
+                        <text x="30" y="24" font-family="Inter,sans-serif" font-size="15" font-weight="800"
+                            letter-spacing="-0.04em" fill="white">NEXUS</text>
+                        <defs>
+                            <linearGradient id="lg2" x1="2" y1="6" x2="24" y2="28" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#ec4899" />
+                                <stop offset="1" stop-color="#f97316" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="footer__logo-item">
+                    <svg viewBox="0 0 110 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Solaris">
+                        <polygon points="13,4 24,28 2,28" fill="url(#lg3)" />
+                        <text x="30" y="24" font-family="Inter,sans-serif" font-size="15" font-weight="800"
+                            letter-spacing="-0.04em" fill="white">SOLARIS</text>
+                        <defs>
+                            <linearGradient id="lg3" x1="2" y1="4" x2="24" y2="28" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#22c55e" />
+                                <stop offset="1" stop-color="#06b6d4" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="footer__logo-item">
+                    <svg viewBox="0 0 106 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Arcvex">
+                        <rect x="2" y="2" width="24" height="24" rx="12" stroke="url(#lg4)" stroke-width="2.5" />
+                        <text x="32" y="24" font-family="Inter,sans-serif" font-size="15" font-weight="800"
+                            letter-spacing="-0.04em" fill="white">ARCVEX</text>
+                        <defs>
+                            <linearGradient id="lg4" x1="2" y1="2" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#eab308" />
+                                <stop offset="1" stop-color="#f97316" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="footer__logo-item">
+                    <svg viewBox="0 0 100 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zetrix">
+                        <rect x="2" y="6" width="20" height="20" rx="3" fill="url(#lg5)" transform="rotate(12 12 16)" />
+                        <text x="30" y="24" font-family="Inter,sans-serif" font-size="15" font-weight="800"
+                            letter-spacing="-0.04em" fill="white">ZETRIX</text>
+                        <defs>
+                            <linearGradient id="lg5" x1="2" y1="6" x2="22" y2="26" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#06b6d4" />
+                                <stop offset="1" stop-color="#3a7bfd" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="footer__logo-item">
+                    <svg viewBox="0 0 110 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Lumara">
+                        <path d="M13 3L25 17L13 31L1 17Z" fill="url(#lg6)" />
+                        <text x="31" y="24" font-family="Inter,sans-serif" font-size="15" font-weight="800"
+                            letter-spacing="-0.04em" fill="white">LUMARA</text>
+                        <defs>
+                            <linearGradient id="lg6" x1="1" y1="3" x2="25" y2="31" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#a855f7" />
+                                <stop offset="1" stop-color="#ec4899" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2026 BOLO CREATE — Part of Cimpress International</p>
+            <p>Privacy Policy · Terms of Use</p>
+        </div>
+    </footer>
+
+    <!-- Custom Cursor -->
+    <script src="cursor.js"></script>
+    <script src="main.js"></script>
+
+    <!-- Spline 3D runtime (ESM via CDN) -->
+    <script type="module">
+        // ── Performance bail-outs ──────────────────────────────────────────
+        // Skip Spline entirely on low-memory / motion-sensitive / tiny devices
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const lowMemory = navigator.deviceMemory !== undefined && navigator.deviceMemory < 2;
+        const tinyScreen = window.innerWidth < 480;
+
+        if (prefersReduced || lowMemory || tinyScreen) {
+            document.getElementById('splineLoader').style.display = 'none';
+            document.getElementById('trackingToggle').style.display = 'none';
+        } else {
+            import('https://esm.sh/@splinetool/runtime@1.9.72').then(({ Application }) => {
+
+                const SCENE_URL = 'https://prod.spline.design/j3zSFisA4nqMI-FV/scene.splinecode';
+                const canvas = document.getElementById('splineCanvas');
+                const loader = document.getElementById('splineLoader');
+                const hero = document.getElementById('hero');
+                const toggle = document.getElementById('trackingToggle');
+                const label = document.getElementById('trackingLabel');
+
+                // ── Tracking OFF by default ───────────────────────────────
+                // When false: zero mousemove events reach the canvas.
+                // With renderOnDemand:true this costs almost no GPU.
+                let trackingEnabled = false;
+
+                // Helper: send robot back to its resting centre pose
+                function resetRobotPose() {
+                    const r = hero.getBoundingClientRect();
+                    canvas.dispatchEvent(new MouseEvent('mousemove', {
+                        bubbles: false, cancelable: true,
+                        clientX: r.left + r.width * 0.65,
+                        clientY: r.top + r.height * 0.5,
+                    }));
+                }
+
+                toggle.addEventListener('click', () => {
+                    trackingEnabled = !trackingEnabled;
+                    toggle.classList.toggle('is-active', trackingEnabled);
+                    toggle.setAttribute('aria-pressed', String(trackingEnabled));
+                    label.textContent = trackingEnabled ? '3D TRACKING\u00a0\u00a0ON ' : '3D TRACKING\u00a0\u00a0OFF';
+                    if (!trackingEnabled) resetRobotPose(); // ease back to idle
+                });
+
+                const app = new Application(canvas, { renderOnDemand: true });
+
+                app.load(SCENE_URL)
+                    .then(() => {
+                        // Fade loader out
+                        loader.style.transition = 'opacity 0.8s ease';
+                        loader.style.opacity = '0';
+                        setTimeout(() => { loader.style.display = 'none'; }, 820);
+
+                        // Fade canvas in
+                        canvas.style.transition = 'opacity 1s ease';
+                        canvas.style.opacity = window.innerWidth <= 768 ? '0.55' : '1';
+
+                        // ── RAF-throttled mousemove — gated by trackingEnabled
+                        let pending = false;
+                        let lastX = 0, lastY = 0;
+
+                        hero.addEventListener('mousemove', (e) => {
+                            if (!trackingEnabled) return;    // ← OFF = no-op
+                            lastX = e.clientX;
+                            lastY = e.clientY;
+                            if (pending) return;
+                            pending = true;
+                            requestAnimationFrame(() => {
+                                pending = false;
+                                canvas.dispatchEvent(new MouseEvent('mousemove', {
+                                    bubbles: false, cancelable: true,
+                                    clientX: lastX, clientY: lastY,
+                                }));
+                            });
+                        }, { passive: true });
+
+                        // Gentle reset to idle when cursor leaves hero
+                        hero.addEventListener('mouseleave', () => {
+                            if (trackingEnabled) resetRobotPose();
+                        });
+
+                        // Pause renderer when hero scrolls off screen
+                        new IntersectionObserver((entries) => {
+                            entries.forEach(e => e.isIntersecting ? app.play?.() : app.stop?.());
+                        }, { threshold: 0.01 }).observe(hero);
+
+                        // Pause in hidden/background tabs
+                        document.addEventListener('visibilitychange', () => {
+                            document.hidden ? app.stop?.() : app.play?.();
+                        });
+                    })
+                    .catch(() => { loader.style.display = 'none'; });
+            });
+        }
+    </script>
+    <script>
+        // Contact form submission handler
+        // Replace the setTimeout with a real fetch() to Formspree, EmailJS, or your backend
+        const contactForm = document.getElementById('contactForm');
+        const cfSuccess = document.getElementById('cfSuccess');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const required = ['cf-name', 'cf-email', 'cf-message'];
+                let valid = true;
+                required.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (!el.value.trim()) { el.style.borderColor = '#ef4444'; valid = false; }
+                    else el.style.borderColor = '';
+                });
+                if (!valid) return;
+                const btn = document.getElementById('cfSubmit');
+                btn.textContent = 'SENDING...';
+                btn.disabled = true;
+                /* ── INTEGRATION POINT ──────────────────────────────
+                   Replace setTimeout with:
+                   fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                     method: 'POST',
+                     headers: { 'Accept': 'application/json' },
+                     body: new FormData(contactForm)
+                   }).then(r => r.ok ? showSuccess() : alert('Error sending.'));
+                ─────────────────────────────────────────────────── */
+                setTimeout(() => {
+                    contactForm.style.display = 'none';
+                    cfSuccess.style.display = 'flex';
+                }, 1200);
+            });
+        }
+    </script>
+</body>
+
+</html>

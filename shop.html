@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop — BOLO CREATE | Custom Print, Signage & Branded Merch</title>
+    <meta name="description"
+        content="Shop custom business cards, signage, branded apparel, promotional products, labels, and more. Professional quality, fast turnaround. Ships across Canada & worldwide." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="shop.css" />
+    <script src="trans.js"></script>
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════ -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav__logo">
+            <img src="https://i.ibb.co/PsDBLbP8/BOLO.png" alt="BOLO CREATE" class="nav__logo-img" />
+        </a>
+        <ul class="nav__links">
+            <li><a href="index.html#services">SERVICES</a></li>
+            <li><a href="shop.html" class="nav__link--active">SHOP</a></li>
+            <li><a href="index.html#work">WORK</a></li>
+            <li><a href="index.html#about">ABOUT</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+        </ul>
+        <div class="nav__actions">
+            <button class="nav__cart-btn" id="cartToggle" aria-label="Open cart">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+                <span class="nav__cart-count" id="cartCount">0</span>
+            </button>
+            <a href="index.html#contact" class="nav__cta">// GET A QUOTE <span class="nav__cta-arrow">→</span></a>
+        </div>
+        <button class="nav__burger" id="navBurger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+       SHOP HERO BANNER
+  ══════════════════════════════════════ -->
+    <section class="shop-hero">
+        <div class="shop-hero__content">
+            <span class="section-tag">// 400+ PRODUCTS</span>
+            <h1 class="shop-hero__headline">SHOP ALL PRODUCTS</h1>
+            <p class="shop-hero__sub">Custom print, signage, branded apparel & promo merch — designed for your business.
+                Professional quality, fast turnaround.</p>
+        </div>
+        <div class="shop-hero__glow shop-hero__glow--l"></div>
+        <div class="shop-hero__glow shop-hero__glow--r"></div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       SHOP LAYOUT
+  ══════════════════════════════════════ -->
+    <div class="shop-layout" id="shopLayout">
+
+        <!-- ── SIDEBAR ── -->
+        <aside class="shop-sidebar" id="shopSidebar">
+            <div class="sidebar__header">
+                <span class="sidebar__title">BROWSE BY CATEGORY</span>
+                <button class="sidebar__close" id="sidebarClose" aria-label="Close sidebar">✕</button>
+            </div>
+
+            <nav class="sidebar__nav" id="sidebarNav">
+
+                <div class="sidebar__item">
+                    <button class="sidebar__cat sidebar__cat--active" data-cat="all">
+                        <span class="sidebar__cat-icon">◈</span> ALL PRODUCTS
+                        <span class="sidebar__cat-count" id="count-all">48</span>
+                    </button>
+                </div>
+
+                <!-- Business Essentials -->
+                <div class="sidebar__item sidebar__item--group">
+                    <button class="sidebar__cat sidebar__group-toggle" data-cat="business-essentials"
+                        data-group="grp-1">
+                        <span class="sidebar__cat-icon">📋</span> BUSINESS ESSENTIALS
+                        <span class="sidebar__toggle-arrow">›</span>
+                    </button>
+                    <ul class="sidebar__sub-list" id="grp-1">
+                        <li><button class="sidebar__sub-btn" data-cat="business-cards">Business Cards</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="letterhead">Letterhead</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="envelopes">Envelopes</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="folders">Presentation Folders</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="note-cards">Note Cards</button></li>
+                    </ul>
+                </div>
+
+                <!-- Marketing Materials -->
+                <div class="sidebar__item sidebar__item--group">
+                    <button class="sidebar__cat sidebar__group-toggle" data-cat="marketing-materials"
+                        data-group="grp-2">
+                        <span class="sidebar__cat-icon">📰</span> MARKETING MATERIALS
+                        <span class="sidebar__toggle-arrow">›</span>
+                    </button>
+                    <ul class="sidebar__sub-list" id="grp-2">
+                        <li><button class="sidebar__sub-btn" data-cat="flyers">Flyers & Leaflets</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="brochures">Brochures</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="postcards">Postcards</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="door-hangers">Door Hangers</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="booklets">Booklets & Catalogues</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="table-tents">Table Tents</button></li>
+                    </ul>
+                </div>
+
+                <!-- Signs & Displays -->
+                <div class="sidebar__item sidebar__item--group">
+                    <button class="sidebar__cat sidebar__group-toggle" data-cat="signs-displays" data-group="grp-3">
+                        <span class="sidebar__cat-icon">🪧</span> SIGNS & DISPLAYS
+                        <span class="sidebar__toggle-arrow">›</span>
+                    </button>
+                    <ul class="sidebar__sub-list" id="grp-3">
+                        <li><button class="sidebar__sub-btn" data-cat="roll-up-banners">Roll-Up Banners</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="vinyl-banners">Vinyl Banners</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="feather-flags">Feather Flags</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="yard-signs">Yard Signs</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="posters">Posters & Foam Board</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="window-decals">Window Decals</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="aframe-signs">A-Frame Signs</button></li>
+                    </ul>
+                </div>
+
+                <!-- Clothing & Apparel -->
+                <div class="sidebar__item sidebar__item--group">
+                    <button class="sidebar__cat sidebar__group-toggle" data-cat="clothing-apparel" data-group="grp-4">
+                        <span class="sidebar__cat-icon">👕</span> CLOTHING & APPAREL
+                        <span class="sidebar__toggle-arrow">›</span>
+                    </button>
+                    <ul class="sidebar__sub-list" id="grp-4">
+                        <li><button class="sidebar__sub-btn" data-cat="t-shirts">Custom T-Shirts</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="hoodies">Hoodies & Sweatshirts</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="polo-shirts">Polo Shirts</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="tank-tops">Tank Tops</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="hats">Hats & Caps</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="jackets">Jackets & Vests</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="beanies">Toques & Beanies</button></li>
+                    </ul>
+                </div>
+
+                <!-- Bags & Totes -->
+                <div class="sidebar__item sidebar__item--group">
+                    <button class="sidebar__cat sidebar__group-toggle" data-cat="bags-totes" data-group="grp-5">
+                        <span class="sidebar__cat-icon">👜</span> BAGS & TOTES
+                        <span class="sidebar__toggle-arrow">›</span>
+                    </button>
+                    <ul class="sidebar__sub-list" id="grp-5">
+                        <li><button class="sidebar__sub-btn" data-cat="tote-bags">Tote Bags</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="backpacks">Backpacks</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="drawstring-bags">Drawstring Bags</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="shopping-bags">Shopping Bags</button></li>
+                    </ul>
+                </div>
+
+                <!-- Labels & Stickers -->
+                <div class="sidebar__item sidebar__item--group">
+                    <button class="sidebar__cat sidebar__group-toggle" data-cat="labels-stickers" data-group="grp-6">
+                        <span class="sidebar__cat-icon">🏷️</span> LABELS & STICKERS
+                        <span class="sidebar__toggle-arrow">›</span>
+                    </button>
+                    <ul class="sidebar__sub-list" id="grp-6">
+                        <li><button class="sidebar__sub-btn" data-cat="die-cut-stickers">Die-Cut Stickers</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="roll-labels">Roll Labels</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="product-labels">Product Labels</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="clear-stickers">Clear Stickers</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="bumper-stickers">Bumper Stickers</button></li>
+                    </ul>
+                </div>
+
+                <!-- Promotional Products -->
+                <div class="sidebar__item sidebar__item--group">
+                    <button class="sidebar__cat sidebar__group-toggle" data-cat="promo-products" data-group="grp-7">
+                        <span class="sidebar__cat-icon">🎁</span> PROMO & MERCH
+                        <span class="sidebar__toggle-arrow">›</span>
+                    </button>
+                    <ul class="sidebar__sub-list" id="grp-7">
+                        <li><button class="sidebar__sub-btn" data-cat="pens">Pens & Writing</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="mugs">Mugs & Tumblers</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="water-bottles">Water Bottles</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="keychains">Keychains</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="lanyards">Lanyards</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="notebooks">Notebooks & Journals</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="tech-accessories">Tech Accessories</button></li>
+                    </ul>
+                </div>
+
+                <!-- Packaging -->
+                <div class="sidebar__item sidebar__item--group">
+                    <button class="sidebar__cat sidebar__group-toggle" data-cat="packaging" data-group="grp-8">
+                        <span class="sidebar__cat-icon">📦</span> PACKAGING
+                        <span class="sidebar__toggle-arrow">›</span>
+                    </button>
+                    <ul class="sidebar__sub-list" id="grp-8">
+                        <li><button class="sidebar__sub-btn" data-cat="custom-boxes">Custom Boxes</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="mailer-boxes">Mailer Boxes</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="tissue-paper">Tissue Paper</button></li>
+                        <li><button class="sidebar__sub-btn" data-cat="kraft-bags">Kraft Paper Bags</button></li>
+                    </ul>
+                </div>
+
+            </nav>
+
+            <!-- Price Filter -->
+            <div class="sidebar__filter">
+                <span class="sidebar__filter-label">PRICE RANGE</span>
+                <div class="price-range">
+                    <input type="range" id="priceMax" min="0" max="200" value="200" step="5" class="price-slider" />
+                    <div class="price-range__labels">
+                        <span>$0</span>
+                        <span id="priceMaxLabel">$200+</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ── MAIN SHOP AREA ── -->
+        <main class="shop-main">
+
+            <!-- Filter bar -->
+            <div class="shop-filterbar">
+                <button class="shop-filterbar__cat-btn" id="sidebarOpen">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                    CATEGORIES
+                </button>
+                <span class="shop-filterbar__result-count" id="resultCount">Showing 48 products</span>
+
+                <!-- Live Search -->
+                <div class="shop-filterbar__search">
+                    <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+
+                <div class="shop-filterbar__sort">
+                    <label for="sortSelect">Sort:</label>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="featured">Featured</option>
+                        <option value="price-asc">Price: Low → High</option>
+                        <option value="price-desc">Price: High → Low</option>
+                        <option value="name-asc">Name A–Z</option>
+                        <option value="new">Newest</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Active Filter Tags -->
+            <div class="shop-active-filters" id="activeFilters"></div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Empty state -->
+            <div class="shop-empty" id="shopEmpty" style="display:none">
+                <p>No products match your filters.</p>
+                <button class="btn btn--ghost" onclick="resetFilters()">Clear Filters</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ══════════════════════════════════════
+       CART DRAWER
+  ══════════════════════════════════════ -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+        <div class="cart-drawer__header">
+            <h2 class="cart-drawer__title">YOUR CART</h2>
+            <button class="cart-drawer__close" id="cartClose" aria-label="Close cart">✕</button>
+        </div>
+        <div class="cart-drawer__body" id="cartBody">
+            <div class="cart-empty" id="cartEmpty">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+                    opacity="0.3">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+                <p>Your cart is empty.</p>
+                <button class="btn btn--ghost" onclick="closeCart()">Continue Shopping</button>
+            </div>
+            <ul class="cart-items" id="cartItems"></ul>
+        </div>
+        <div class="cart-drawer__footer" id="cartFooter" style="display:none">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">$0.00</span>
+            </div>
+            <p class="cart-shipping-note">Shipping & taxes calculated at checkout</p>
+            <button class="btn btn--primary btn--lg btn--full" id="checkoutBtn">PROCEED TO CHECKOUT →</button>
+            <button class="btn btn--ghost btn--full" onclick="closeCart()">CONTINUE SHOPPING</button>
+        </div>
+    </aside>
+
+    <!-- ══════════════════════════════════════
+       QUICK VIEW MODAL
+  ══════════════════════════════════════ -->
+    <div class="modal-overlay" id="qvOverlay"></div>
+    <div class="qv-modal" id="qvModal" role="dialog" aria-modal="true" aria-label="Product quick view">
+        <button class="modal-close" id="qvClose">✕</button>
+        <div class="qv-modal__inner" id="qvContent"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+       CHECKOUT MODAL (Stripe-ready)
+  ══════════════════════════════════════ -->
+    <div class="modal-overlay" id="checkoutOverlay"></div>
+    <div class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-label="Checkout">
+        <button class="modal-close" id="checkoutClose">✕</button>
+
+        <!-- Step indicators -->
+        <div class="checkout-steps">
+            <div class="checkout-step active" data-step="1">
+                <span class="checkout-step__num">1</span>
+                <span class="checkout-step__label">Cart</span>
+            </div>
+            <div class="checkout-step__line"></div>
+            <div class="checkout-step" data-step="2">
+                <span class="checkout-step__num">2</span>
+                <span class="checkout-step__label">Shipping</span>
+            </div>
+            <div class="checkout-step__line"></div>
+            <div class="checkout-step" data-step="3">
+                <span class="checkout-step__num">3</span>
+                <span class="checkout-step__label">Payment</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Order Summary -->
+        <div class="checkout-panel active" id="coStep1">
+            <h3 class="checkout-panel__title">ORDER SUMMARY</h3>
+            <ul class="co-item-list" id="coItemList"></ul>
+            <div class="co-totals">
+                <div class="co-total-row"><span>Subtotal</span><span id="coSubtotal">$0.00</span></div>
+                <div class="co-total-row"><span>Shipping</span><span id="coShipping">Calculated next</span></div>
+                <div class="co-total-row co-total-row--total"><span>TOTAL</span><span id="coTotal">$0.00</span></div>
+            </div>
+            <button class="btn btn--primary btn--lg btn--full" onclick="goToStep(2)">CONTINUE TO SHIPPING →</button>
+        </div>
+
+        <!-- Step 2: Shipping Info -->
+        <div class="checkout-panel" id="coStep2">
+            <h3 class="checkout-panel__title">CONTACT & SHIPPING</h3>
+            <form class="checkout-form" id="shippingForm" novalidate>
+                <div class="form-row form-row--2">
+                    <div class="form-group">
+                        <label for="co-firstName">First Name *</label>
+                        <input type="text" id="co-firstName" name="firstName" required autocomplete="given-name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="co-lastName">Last Name *</label>
+                        <input type="text" id="co-lastName" name="lastName" required autocomplete="family-name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="co-email">Email Address *</label>
+                    <input type="email" id="co-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="form-group">
+                    <label for="co-phone">Phone Number</label>
+                    <input type="tel" id="co-phone" name="phone" autocomplete="tel" />
+                </div>
+                <div class="form-group">
+                    <label for="co-address">Street Address *</label>
+                    <input type="text" id="co-address" name="address" required autocomplete="street-address" />
+                </div>
+                <div class="form-row form-row--2">
+                    <div class="form-group">
+                        <label for="co-city">City *</label>
+                        <input type="text" id="co-city" name="city" required autocomplete="address-level2" />
+                    </div>
+                    <div class="form-group">
+                        <label for="co-province">Province / State *</label>
+                        <select id="co-province" name="province" required>
+                            <option value="">Select...</option>
+                            <option>Ontario</option>
+                            <option>Quebec</option>
+                            <option>British Columbia</option>
+                            <option>Alberta</option>
+                            <option>Manitoba</option>
+                            <option>Saskatchewan</option>
+                            <option>Nova Scotia</option>
+                            <option>New Brunswick</option>
+                            <option>Newfoundland and Labrador</option>
+                            <option>PEI</option>
+                            <option>Northwest Territories</option>
+                            <option>Nunavut</option>
+                            <option>Yukon</option>
+                            <option>Other / US State</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row form-row--2">
+                    <div class="form-group">
+                        <label for="co-postal">Postal / ZIP Code *</label>
+                        <input type="text" id="co-postal" name="postal" required autocomplete="postal-code" />
+                    </div>
+                    <div class="form-group">
+                        <label for="co-country">Country *</label>
+                        <select id="co-country" name="country" required>
+                            <option value="CA">Canada</option>
+                            <option value="US">United States</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="AU">Australia</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Shipping method -->
+                <div class="form-group">
+                    <label>Shipping Method *</label>
+                    <div class="shipping-options">
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping" value="standard" checked />
+                            <span class="shipping-option__inner">
+                                <span class="shipping-option__name">Standard (5–7 business days)</span>
+                                <span class="shipping-option__price">$9.99</span>
+                            </span>
+                        </label>
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping" value="express" />
+                            <span class="shipping-option__inner">
+                                <span class="shipping-option__name">Express (2–3 business days)</span>
+                                <span class="shipping-option__price">$19.99</span>
+                            </span>
+                        </label>
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping" value="rush" />
+                            <span class="shipping-option__inner">
+                                <span class="shipping-option__name">Rush (Next business day)</span>
+                                <span class="shipping-option__price">$39.99</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="co-notes">Order Notes (optional)</label>
+                    <textarea id="co-notes" name="notes" rows="3"
+                        placeholder="Special instructions, artwork notes, etc."></textarea>
+                </div>
+                <div class="checkout-form__actions">
+                    <button type="button" class="btn btn--ghost" onclick="goToStep(1)">← BACK</button>
+                    <button type="submit" class="btn btn--primary btn--lg">CONTINUE TO PAYMENT →</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 3: Payment (Stripe-ready) -->
+        <div class="checkout-panel" id="coStep3">
+            <h3 class="checkout-panel__title">PAYMENT</h3>
+            <div class="payment-summary" id="paymentSummary"></div>
+
+            <form class="checkout-form" id="paymentForm" novalidate>
+                <!-- ─────────────────────────────────────
+             STRIPE INTEGRATION POINT
+             To connect Stripe:
+             1. Include: <script src="https://js.stripe.com/v3/"></script>
+             2. const stripe = Stripe('YOUR_PUBLISHABLE_KEY');
+             3. const elements = stripe.elements();
+             4. Mount to: elements.create('card').mount('#stripe-card-element')
+             5. Handle paymentForm submit with stripe.confirmCardPayment()
+        ─────────────────────────────────────── -->
+                <div class="form-group">
+                    <label>Card Details</label>
+                    <!-- Stripe Elements will be injected here -->
+                    <div class="stripe-card-wrapper" id="stripe-card-element">
+                        <!-- Placeholder card UI — replaced by Stripe Elements on integration -->
+                        <div class="stripe-placeholder">
+                            <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" class="card-num-input"
+                                id="cardNumber" inputmode="numeric" autocomplete="cc-number" />
+                            <div class="card-row">
+                                <input type="text" placeholder="MM / YY" maxlength="7" class="card-exp-input"
+                                    id="cardExpiry" autocomplete="cc-exp" />
+                                <input type="text" placeholder="CVC" maxlength="4" class="card-cvc-input" id="cardCvc"
+                                    autocomplete="cc-csc" />
+                            </div>
+                            <input type="text" placeholder="Name on card" class="card-name-input" id="cardName"
+                                autocomplete="cc-name" />
+                        </div>
+                    </div>
+                    <div id="stripe-errors" class="stripe-error-msg" role="alert"></div>
+                </div>
+
+                <div class="promo-code-row">
+                    <input type="text" id="promoCode" placeholder="Promo / referral code" class="promo-input" />
+                    <button type="button" class="btn btn--ghost btn--sm" id="applyPromo">APPLY</button>
+                </div>
+
+                <div class="co-totals co-totals--payment" id="paymentTotals"></div>
+
+                <div class="payment-trust">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    <span>Secured by 256-bit SSL encryption. Card data processed by Stripe.</span>
+                </div>
+
+                <div class="checkout-form__actions">
+                    <button type="button" class="btn btn--ghost" onclick="goToStep(2)">← BACK</button>
+                    <button type="submit" class="btn btn--primary btn--lg" id="payNowBtn">
+                        <span id="payBtnLabel">PAY NOW →</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 4: Confirmation (virtual) -->
+        <div class="checkout-panel" id="coStep4">
+            <div class="order-confirm">
+                <div class="order-confirm__icon">✓</div>
+                <h3>ORDER CONFIRMED!</h3>
+                <p id="confirmMessage">Thank you for your order. You'll receive a confirmation email shortly with your
+                    order details and artwork upload instructions.</p>
+                <p class="confirm-order-id" id="confirmOrderId"></p>
+                <a href="shop.html" class="btn btn--primary">CONTINUE SHOPPING</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════════
+       FOOTER (minimal)
+  ══════════════════════════════════════ -->
+    <footer class="shop-footer">
+        <div class="shop-footer__inner">
+            <a href="index.html" class="nav__logo">
+                <img src="https://i.ibb.co/PsDBLbP8/BOLO.png" alt="BOLO CREATE" class="nav__logo-img"
+                    style="height:30px" />
+            </a>
+            <p class="shop-footer__copy">© 2026 BOLO CREATE — Part of Cimpress International &nbsp;·&nbsp; <a
+                    href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a></p>
+            <p class="shop-footer__secure">🔒 Secure checkout · Stripe Payments · Ships worldwide</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Custom Cursor -->
+    <script src="cursor.js"></script>
+    <script src="shop.js"></script>
+</body>
+
+</html>
